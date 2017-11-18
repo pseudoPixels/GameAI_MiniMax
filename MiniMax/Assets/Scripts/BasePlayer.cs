@@ -2,22 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BasePlayer  {
-    GameState currentState;
-    GameManager gameManager;
+public interface IBasePlayer  {
 
-    private bool isItMyTurn = false;
 
-    public BasePlayer(GameManager gM)
-    {
-        this.gameManager = gM;
-    }
+    void setCurrentGameState(GameState gS);
+    
+    void onGettingPlayTurn(GameState currentState);
 
-    public void setCurrentGameState(GameState gS)
-    {
-        this.currentState = gS;
-    }
+    bool isItMyTurn();
 
-    public abstract void onGettingPlayTurn(GameState currentState);
+    void setTurn(bool isTurn);
+
+    string getPlaySymbol();
 
 }

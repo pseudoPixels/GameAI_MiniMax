@@ -45,9 +45,23 @@ public class GameState {
         this.gameBoard = newBoard;
     }
 
+    public void resetBoard()
+    {
+        //empty board
+        this.gameBoard = new string[] { "E", "E", "E",
+                                   "E", "E", "E",
+                                   "E", "E", "E"
+                                  };
+    }
+
     public bool isBoardFull()
     {
-        return false;
+        for(int i = 0; i < this.gameBoard.Length; i++)
+        {
+            if (this.gameBoard[i] == "E") return false;
+        }
+
+        return true;
     }
 
     public bool isWinningState()
@@ -66,8 +80,24 @@ public class GameState {
         return false;
     }
 
+    public List<int> getEmptySpaces()
+    {
+        List<int> emptySapces = new List<int>();
 
+        for(int i=0; i<this.gameBoard.Length; i++)
+        {
+            if (this.gameBoard[i] == "E") emptySapces.Add(i);
+        }
 
+        return emptySapces;
+    }
+
+    public bool isValidMove(int posIndex)
+    {
+        if (this.gameBoard[posIndex] == "E") return true;
+
+        return false;
+    }
 
 
 
